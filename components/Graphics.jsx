@@ -8,9 +8,10 @@ import {
   RandomizedLight,
   SoftShadows,
   Loader,
+  PerformanceMonitor,
 } from "@react-three/drei";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
-import { Suspense, useRef } from "react";
+import { Suspense, useRef, useState } from "react";
 import Frames from "./Frames";
 import VideoText from "./VideoText";
 import Floor from "./Floor";
@@ -20,11 +21,12 @@ import Stars from "./Stars";
 ("use client");
 
 export default function Graphics() {
+  const [perfSucks, degrade] = useState(false);
   return (
     <main className="w-screen h-screen">
       <Suspense fallback={<Loader />}>
         <Canvas dpr={[1, 1.5]} camera={{ fov: 120, position: [0, 0, 0] }}>
-          <SoftShadows />
+          <PerformanceMonitor onDecline={() => degrade(true)} />
           <fog attach="fog" args={["white", 0, 40]} />
           <ambientLight intensity={1} />
           <directionalLight
@@ -42,8 +44,11 @@ export default function Graphics() {
           </VideoText>
           <Frames images={images} />
           <Floor />
-          <Post />
-          <Stars />
+
+          {!perfSucks && <Post />}
+          {!perfSucks && <SoftShadows />}
+          {!perfSucks && <Stars />}
+
           <Environment preset="city" />
         </Canvas>
       </Suspense>
