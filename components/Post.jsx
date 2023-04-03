@@ -6,14 +6,17 @@ import {
   Vignette,
   SSAO,
   SSR,
+  LUT,
 } from "@react-three/postprocessing";
 import { useRef } from "react";
 import { WaterPass } from "three-stdlib";
-import { useFrame, extend } from "@react-three/fiber";
+import { useFrame, extend, useLoader } from "@react-three/fiber";
 import { Effects } from "@react-three/drei";
+import { LUTCubeLoader } from "postprocessing";
+import { RGBELoader } from "three-stdlib";
 
-extend({ WaterPass });
 export default function Post({ children }) {
+  const texture = useLoader(LUTCubeLoader, "/F-6800-STD.cube");
   return (
     <EffectComposer>
       <DepthOfField
@@ -30,6 +33,8 @@ export default function Post({ children }) {
       />
       <Noise opacity={0.1} />
       <Vignette eskil={false} offset={0.1} darkness={1.1} />
+      <LUT lut={texture} />
+      <SSR />
     </EffectComposer>
   );
 }

@@ -48,8 +48,7 @@ export default function Graphics() {
           {!perfSucks && <Post />}
           {!perfSucks && <SoftShadows />}
           {!perfSucks && <Stars />}
-
-          <Environment preset="city" />
+          {!perfSucks && <Environment preset="city" />}
         </Canvas>
       </Suspense>
     </main>
