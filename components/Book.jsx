@@ -8,6 +8,19 @@ import { useRoute } from "wouter";
 
 const GOLDENRATIO = 1.61803398875;
 
+const materialProps = {
+  thickness: 5,
+  roughness: 0,
+  clearcoat: 1,
+  clearcoatRoughness: 0,
+  transmission: 1,
+  ior: 1.25,
+  envMapIntensity: 25,
+  color: "#ffffff",
+  attenuationTint: "#ffe79e",
+  attenuationDistance: 0,
+};
+
 export default function Book(props) {
   const book = useRef();
   const { nodes } = useGLTF("/obj/open_book.glb");
@@ -42,8 +55,9 @@ export default function Book(props) {
         receiveShadow
         scale={0.02}
         geometry={nodes.Object_2.geometry}
-        material={nodes.Object_2.material}
-      />
+      >
+        <meshPhysicalMaterial thickness={5} clearcoat={1} color={"#ffffff"} />
+      </mesh>
     </group>
   );
 }

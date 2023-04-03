@@ -20,9 +20,11 @@ export default function VideoText(props) {
   useEffect(() => {
     void video.play();
   }, [video]);*/
+
   return (
     <Text scale={0.2} font="/Inter-Bold.woff" letterSpacing={-0.06} {...props}>
       {props.children}
+      <meshPhysicalMaterial thickness={5} clearcoat={1} color={"#ffffff"} />
     </Text>
   );
 }

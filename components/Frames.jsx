@@ -20,7 +20,7 @@ export default function Frames({
     clicked.current = ref.current.getObjectByName(params?.id);
     if (clicked.current) {
       clicked.current.parent.updateWorldMatrix(true, true);
-      clicked.current.parent.localToWorld(p.set(0, GOLDENRATIO / 2, 2));
+      clicked.current.parent.localToWorld(p.set(0, GOLDENRATIO / 2, 0.8));
       clicked.current.parent.getWorldQuaternion(q);
     } else {
       p.set(0, 1, 5.5);
