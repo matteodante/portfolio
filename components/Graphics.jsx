@@ -23,7 +23,7 @@ export default function Graphics() {
   return (
     <main className="w-screen h-screen">
       <Suspense fallback={<Loader />}>
-        <Canvas dpr={[1, 1.5]} camera={{ fov: 70, position: [0, 0, 0] }}>
+        <Canvas dpr={[1, 1.5]} camera={{ fov: 120, position: [0, 0, 0] }}>
           <SoftShadows />
           <fog attach="fog" args={["white", 0, 40]} />
           <ambientLight intensity={1} />
