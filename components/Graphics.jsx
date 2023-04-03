@@ -22,7 +22,7 @@ import Stars from "./Stars";
 export default function Graphics() {
   return (
     <main className="w-screen h-screen">
-      <Suspense fallback={null}>
+      <Suspense fallback={<Loader />}>
         <Canvas dpr={[1, 1.5]} camera={{ fov: 70, position: [0, 0, 0] }}>
           <SoftShadows />
           <fog attach="fog" args={["white", 0, 40]} />
@@ -47,7 +47,6 @@ export default function Graphics() {
           <Environment preset="city" />
         </Canvas>
       </Suspense>
-      <Loader />
     </main>
   );
 }

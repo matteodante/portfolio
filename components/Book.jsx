@@ -47,5 +47,3 @@ export default function Book(props) {
     </group>
   );
 }
-
-useGLTF.preload("/obj/open_book.glb");

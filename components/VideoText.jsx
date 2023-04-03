@@ -4,7 +4,7 @@ import * as THREE from "three";
 import { extend } from "@react-three/fiber";
 
 export default function VideoText(props) {
-  const [video] = useState(() => {
+  /*const [video] = useState(() => {
     const sources = ["1.mp4", "2.mp4", "3.mp4"];
     const randomSource = sources[Math.floor(Math.random() * sources.length)];
 
@@ -19,18 +19,10 @@ export default function VideoText(props) {
   });
   useEffect(() => {
     void video.play();
-  }, [video]);
+  }, [video]);*/
   return (
     <Text scale={0.2} font="/Inter-Bold.woff" letterSpacing={-0.06} {...props}>
       {props.children}
-
-      <meshBasicMaterial toneMapped={false}>
-        <videoTexture
-          attach="map"
-          args={[video]}
-          encoding={THREE.sRGBEncoding}
-        />
-      </meshBasicMaterial>
     </Text>
   );
 }
