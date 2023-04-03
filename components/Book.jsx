@@ -8,8 +8,6 @@ import { useRoute } from "wouter";
 
 const GOLDENRATIO = 1.61803398875;
 
-useGLTF.preload("/obj/open_book.glb");
-
 export default function Book(props) {
   const book = useRef();
   const { nodes } = useGLTF("/obj/open_book.glb");
@@ -49,3 +47,5 @@ export default function Book(props) {
     </group>
   );
 }
+
+useGLTF.preload("/obj/open_book.glb");
