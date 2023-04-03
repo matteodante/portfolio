@@ -4,7 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-/public/obj
+#/public/obj
 
 # testing
 /coverage

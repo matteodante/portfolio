@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import * as THREE from "three";
 import getUuid from "uuid-by-string";
 import { useRoute } from "wouter";
-
+import Book from "./Book";
 const GOLDENRATIO = 1.61803398875;
 
 export default function Frame({ url, c = new THREE.Color(), ...props }) {
@@ -79,6 +79,7 @@ export default function Frame({ url, c = new THREE.Color(), ...props }) {
       >
         {name.split("-").join(" ")}
       </Text>
+      <Book />
     </group>
   );
 }

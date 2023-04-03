@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { useLocation, useRoute } from "wouter";
 import Frame from "./Frame";
+import Model from "./Model";
 
 const GOLDENRATIO = 1.61803398875;
 export default function Frames({
@@ -41,9 +42,9 @@ export default function Frames({
       )}
       onPointerMissed={() => setLocation("/")}
     >
-      {images.map(
-        (props) => <Frame key={props.url} {...props} /> /* prettier-ignore */
-      )}
+      {images.map((props) => (
+        <Frame key={props.url} {...props} />
+      ))}
     </group>
   );
 }

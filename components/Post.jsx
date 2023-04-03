@@ -4,6 +4,8 @@ import {
   DepthOfField,
   Noise,
   Vignette,
+  SSAO,
+  SSR,
 } from "@react-three/postprocessing";
 import { useRef } from "react";
 import { WaterPass } from "three-stdlib";
@@ -24,7 +26,7 @@ export default function Post({ children }) {
         luminanceThreshold={0}
         luminanceSmoothing={1}
         height={300}
-        intensity={0.3}
+        intensity={0.1}
       />
       <Noise opacity={0.1} />
       <Vignette eskil={false} offset={0.1} darkness={1.1} />
