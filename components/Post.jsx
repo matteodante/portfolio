@@ -31,8 +31,7 @@ export default function Post({ children }) {
         height={300}
         intensity={0.1}
       />
-      <Noise opacity={0.1} />
-      <Vignette eskil={false} offset={0.1} darkness={1.1} />
+
       <LUT lut={texture} />
       <SSR />
     </EffectComposer>
