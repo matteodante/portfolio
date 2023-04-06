@@ -1,132 +1,130 @@
-import * as THREE from "three";
-import React, { Suspense, useEffect, useRef, useState } from "react";
+import { useRef, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
-  Environment,
-  ContactShadows,
-  OrbitControls,
   useGLTF,
-  Lightformer,
-  Float,
+  useTexture,
   AccumulativeShadows,
   RandomizedLight,
-  PerformanceMonitor,
-  SpotLight,
-  SpotLightShadow,
+  Decal,
+  Environment,
+  Center,
 } from "@react-three/drei";
-import { Kitchen } from "./Kitchen";
-import { LayerMaterial, Color, Depth } from "lamina";
-import Post from "./Post";
-import { useControls } from "leva";
+import { easing } from "maath";
+import { useSnapshot } from "valtio";
+import { state } from "./store";
+import dynamic from "next/dynamic";
 
-export default function Scene(props) {
-  const [degraded, degrade] = useState(false);
-  const directionalCtl = useControls("Directional Light", {
-    visible: true,
-    position: {
-      x: 3.3,
-      y: 1.0,
-      z: 4.4,
-    },
-    castShadow: true,
-  });
+const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
   return (
-    <main className="w-screen h-screen">
-      <Canvas shadows>
-        <Kitchen />
-        <OrbitControls />
-        <Post />
-        <ambientLight castShadow receiveShadow />
-        <directionalLight
-          visible={directionalCtl.visible}
-          position={[
-            directionalCtl.position.x,
-            directionalCtl.position.y,
-            directionalCtl.position.z,
-          ]}
-          castShadow={directionalCtl.castShadow}
-        />
-        {/** PerfMon will detect performance issues */}
-        <PerformanceMonitor onDecline={() => degrade(true)} />
+    <div className="h-screen w-screen">
+      <Canvas
+        shadows
+        camera={{ position, fov }}
+        gl={{ preserveDrawingBuffer: true }}
+        eventPrefix="client"
+        eventSource={document.getElementById("__next")}
+      >
+        <ambientLight intensity={0.5} />
+        <Environment preset="city" />
+        <CameraRig>
+          <Backdrop />
+          <Center>
+            <Shirt />
+          </Center>
+        </CameraRig>
       </Canvas>
-    </main>
+    </div>
+  );
+};
+
+function Backdrop() {
+  const shadows = useRef();
+  useFrame((state, delta) =>
+    easing.dampC(
+      shadows.current.getMesh().material.color,
+      state.color,
+      0.25,
+      delta
+    )
+  );
+  return (
+    <AccumulativeShadows
+      ref={shadows}
+      temporal
+      frames={60}
+      alphaTest={0.85}
+      scale={10}
+      rotation={[Math.PI / 2, 0, 0]}
+      position={[0, 0, -0.14]}
+    >
+      <RandomizedLight
+        amount={4}
+        radius={9}
+        intensity={0.55}
+        ambient={0.25}
+        position={[5, 5, -10]}
+      />
+      <RandomizedLight
+        amount={4}
+        radius={5}
+        intensity={0.25}
+        ambient={0.55}
+        position={[-5, 5, -9]}
+      />
+    </AccumulativeShadows>
   );
 }
 
-function Lightformers({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
+function CameraRig({ children }) {
   const group = useRef();
-  useFrame(
-    (state, delta) =>
-      (group.current.position.z += delta * 10) > 20 &&
-      (group.current.position.z = -60)
+  const snap = useSnapshot(state);
+  useFrame((state, delta) => {
+    easing.damp3(
+      state.camera.position,
+      [snap.intro ? -state.viewport.width / 4 : 0, 0, 2],
+      0.25,
+      delta
+    );
+    easing.dampE(
+      group.current.rotation,
+      [state.pointer.y / 10, -state.pointer.x / 5, 0],
+      0.25,
+      delta
+    );
+  });
+  return <group ref={group}>{children}</group>;
+}
+
+function Shirt(props) {
+  const snap = useSnapshot(state);
+  const texture = useTexture(`/${snap.decal}.png`);
+  const { nodes, materials } = useGLTF("/shirt_baked_collapsed.glb");
+  useFrame((state, delta) =>
+    easing.dampC(materials.lambert1.color, snap.color, 0.25, delta)
   );
   return (
-    <>
-      {/* Ceiling */}
-      <Lightformer
-        intensity={0.75}
-        rotation-x={Math.PI / 2}
-        position={[0, 5, -9]}
-        scale={[10, 10, 1]}
+    <mesh
+      castShadow
+      geometry={nodes.T_Shirt_male.geometry}
+      material={materials.lambert1}
+      material-roughness={1}
+      {...props}
+      dispose={null}
+    >
+      <Decal
+        position={[0, 0.04, 0.15]}
+        rotation={[0, 0, 0]}
+        scale={0.15}
+        map={texture}
+        map-anisotropy={16}
       />
-      <group rotation={[0, 0.5, 0]}>
-        <group ref={group}>
-          {positions.map((x, i) => (
-            <Lightformer
-              key={i}
-              form="circle"
-              intensity={2}
-              rotation={[Math.PI / 2, 0, 0]}
-              position={[x, 4, i * 4]}
-              scale={[3, 1, 1]}
-            />
-          ))}
-        </group>
-      </group>
-      {/* Sides */}
-      <Lightformer
-        intensity={4}
-        rotation-y={Math.PI / 2}
-        position={[-5, 1, -1]}
-        scale={[20, 0.1, 1]}
-      />
-      <Lightformer
-        rotation-y={Math.PI / 2}
-        position={[-5, -1, -1]}
-        scale={[20, 0.5, 1]}
-      />
-      <Lightformer
-        rotation-y={-Math.PI / 2}
-        position={[10, 1, 0]}
-        scale={[20, 1, 1]}
-      />
-      {/* Accent (red) */}
-      <Float speed={5} floatIntensity={2} rotationIntensity={2}>
-        <Lightformer
-          form="ring"
-          color="red"
-          intensity={1}
-          scale={10}
-          position={[-15, 4, -18]}
-          target={[0, 0, 0]}
-        />
-      </Float>
-      {/* Background */}
-      <mesh scale={100}>
-        <sphereGeometry args={[1, 64, 64]} />
-        <LayerMaterial side={THREE.BackSide}>
-          <Color color="#444" alpha={1} mode="normal" />
-          <Depth
-            colorA="blue"
-            colorB="black"
-            alpha={0.5}
-            mode="normal"
-            near={0}
-            far={300}
-            origin={[100, 100, 100]}
-          />
-        </LayerMaterial>
-      </mesh>
-    </>
+    </mesh>
   );
 }
+
+useGLTF.preload("/shirt_baked_collapsed.glb");
+["/react.png", "/three2.png", "/pmndrs.png"].forEach(useTexture.preload);
+
+export default dynamic(() => Promise.resolve(App), {
+  ssr: false,
+});
