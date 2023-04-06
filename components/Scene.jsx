@@ -8,11 +8,15 @@ import {
   Decal,
   Environment,
   Center,
+  OrbitControls,
 } from "@react-three/drei";
 import { easing } from "maath";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
 import dynamic from "next/dynamic";
+import { Character } from "./Character";
+import Post from "./Post";
+import Soldier from "./Soldier";
 
 const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
   return (
@@ -29,9 +33,10 @@ const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
         <CameraRig>
           <Backdrop />
           <Center>
-            <Shirt />
+            <Soldier />
           </Center>
         </CameraRig>
+        <Post />
       </Canvas>
     </div>
   );
@@ -58,14 +63,14 @@ function Backdrop() {
       position={[0, 0, -0.14]}
     >
       <RandomizedLight
-        amount={4}
+        amount={7}
         radius={9}
         intensity={0.55}
         ambient={0.25}
         position={[5, 5, -10]}
       />
       <RandomizedLight
-        amount={4}
+        amount={7}
         radius={5}
         intensity={0.25}
         ambient={0.55}

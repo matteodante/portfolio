@@ -48,7 +48,7 @@ export function Overlay() {
                   duration: 0.3,
                 }}
               >
-                <h1>LET DO IT.</h1>
+                <h1 className="text-sm">MATTEO DANTE AI</h1>
               </motion.div>
               <div className="support--content">
                 <motion.div
@@ -65,17 +65,12 @@ export function Overlay() {
                     delayChildren: 0.2,
                   }}
                 >
-                  <p>
-                    Create your unique and exclusive shirt with our brand-new 3D
-                    customization tool.{" "}
-                    <strong>Unleash your imagination</strong> and define your
-                    own style.
-                  </p>
+                  <p></p>
                   <button
                     style={{ background: snap.color }}
                     onClick={() => (state.intro = false)}
                   >
-                    CUSTOMIZE IT
+                    ASK ME SOMETHING
                   </button>
                 </motion.div>
               </div>

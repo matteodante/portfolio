@@ -25,15 +25,9 @@ export default function Post({ children }) {
         bokehScale={2}
         height={480}
       />
-      <Bloom
-        luminanceThreshold={0}
-        luminanceSmoothing={1}
-        height={300}
-        intensity={0.1}
-      />
 
       <LUT lut={texture} />
-      <SSR />
+      <SSAO />
     </EffectComposer>
   );
 }
