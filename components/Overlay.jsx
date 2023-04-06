@@ -48,7 +48,7 @@ export function Overlay() {
                   duration: 0.3,
                 }}
               >
-                <h1>LET'S DO IT.</h1>
+                <h1>LET DO IT.</h1>
               </motion.div>
               <div className="support--content">
                 <motion.div
@@ -104,19 +104,6 @@ function Customizer() {
             onClick={() => (state.color = color)}
           ></div>
         ))}
-      </div>
-      <div className="decals">
-        <div className="decals--container">
-          {snap.decals.map((decal) => (
-            <div
-              key={decal}
-              className={`decal`}
-              onClick={() => (state.decal = decal)}
-            >
-              <img src={decal + "_thumb.png"} alt="brand" />
-            </div>
-          ))}
-        </div>
       </div>
       <button
         className="share"
