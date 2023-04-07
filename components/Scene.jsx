@@ -1,5 +1,5 @@
 import { useRef, useEffect, Suspense } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, extend, useFrame } from "@react-three/fiber";
 import {
   useGLTF,
   useTexture,
@@ -10,6 +10,10 @@ import {
   Center,
   OrbitControls,
   Loader,
+  SpotLight,
+  ContactShadows,
+  Stage,
+  Float,
 } from "@react-three/drei";
 import { easing } from "maath";
 import { useSnapshot } from "valtio";
@@ -35,6 +39,7 @@ const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
         >
           <ambientLight intensity={0.5} />
           <Environment preset="city" />
+
           <CameraRig>
             <Backdrop />
             <Center>
@@ -50,39 +55,41 @@ const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
 
 function Backdrop() {
   const shadows = useRef();
-  useFrame((state, delta) =>
-    easing.dampC(
-      shadows.current.getMesh().material.color,
-      state.color,
-      0.25,
-      delta
-    )
-  );
+  useFrame((state, delta) => {});
   return (
-    <AccumulativeShadows
-      ref={shadows}
-      temporal
-      frames={60}
-      alphaTest={0.85}
-      scale={10}
-      rotation={[Math.PI / 2, 0, 0]}
-      position={[0, 0, -0.2]}
-    >
-      <RandomizedLight
-        amount={7}
-        radius={9}
-        intensity={0.55}
-        ambient={0.25}
-        position={[5, 5, -10]}
+    <>
+      <ContactShadows
+        position={[0, -0.8, 0]}
+        opacity={0.25}
+        scale={10}
+        blur={1.5}
+        far={0.8}
       />
-      <RandomizedLight
-        amount={7}
-        radius={5}
-        intensity={0.25}
-        ambient={0.55}
-        position={[-5, 5, -9]}
-      />
-    </AccumulativeShadows>
+      <AccumulativeShadows
+        ref={shadows}
+        temporal
+        frames={100}
+        alphaTest={0.85}
+        scale={15}
+        rotation={[Math.PI / 2, 0, 0]}
+        position={[0, 0, -0.2]}
+      >
+        <RandomizedLight
+          amount={8}
+          radius={9}
+          intensity={0.3}
+          ambient={0.25}
+          position={[5, 5, -10]}
+        />
+        <RandomizedLight
+          amount={7}
+          radius={5}
+          intensity={0.25}
+          ambient={0.55}
+          position={[-5, 5, -9]}
+        />
+      </AccumulativeShadows>
+    </>
   );
 }
 
@@ -98,7 +105,7 @@ function CameraRig({ children }) {
     );
     easing.dampE(
       group.current.rotation,
-      [state.pointer.y / 10, -state.pointer.x / 5, 0],
+      [-state.pointer.y / 2.5, state.pointer.x, 0],
       0.25,
       delta
     );

@@ -25,9 +25,6 @@ export default function Post({ children }) {
         bokehScale={2}
         height={480}
       />
-
-      <LUT lut={texture} />
-      <SSAO />
     </EffectComposer>
   );
 }

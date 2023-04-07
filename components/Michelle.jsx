@@ -6,17 +6,21 @@ import { useFrame } from "@react-three/fiber";
 import { state } from "./store";
 import { easing } from "maath";
 
+useGLTF.preload("/Michelle-transformed.glb");
+
 export function Michelle(props) {
   const snap = useSnapshot(state);
-  const [index, setIndex] = useState(state.animation);
   const { nodes, materials, animations } = useGLTF("/Michelle-transformed.glb");
   const { ref, mixer, names, actions, clips } = useAnimations(animations);
 
   useFrame((state, delta) => {});
   useEffect(() => {
     actions[names[snap.animation]].reset().fadeIn(0.5).play();
-    return () => actions[names[snap.animation]].fadeOut(0.5);
-  }, [index, actions, names, snap.animation]);
+    return () => {
+      if (actions[names[snap.animation]] != undefined)
+        actions[names[snap.animation]].fadeOut(0.5);
+    };
+  }, [actions, names, snap.animation]);
 
   return (
     <group castShadow receiveShadow scale={0.004} {...props} dispose={null}>
@@ -45,5 +49,3 @@ export function Michelle(props) {
     </group>
   );
 }
-
-useGLTF.preload("/Michelle-transformed.glb");
