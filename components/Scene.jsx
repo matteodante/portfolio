@@ -1,5 +1,5 @@
-import { useRef, useEffect, Suspense, useState } from "react";
-import { Canvas, extend, useFrame } from "@react-three/fiber";
+import { useRef, Suspense, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
 import {
   useGLTF,
   useTexture,
@@ -8,23 +8,14 @@ import {
   Decal,
   Environment,
   Center,
-  OrbitControls,
   Loader,
-  SpotLight,
-  ContactShadows,
-  Stage,
-  Float,
   PerformanceMonitor,
 } from "@react-three/drei";
 import { easing } from "maath";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
 import dynamic from "next/dynamic";
-import { Character } from "./Character";
 import Post from "./Post";
-import Soldier from "./Soldier";
-import Droide from "./Droide";
-import { Avatar } from "./Avatar";
 import { Michelle } from "./Michelle";
 
 const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
