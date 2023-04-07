@@ -13,14 +13,8 @@ export function Overlay() {
   };
   return (
     <div
+      className="absolute top-0 left-0 w-screen h-screen"
       onClick={() => (state.animation = (state.animation + 1) % 7)}
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-      }}
     >
       <motion.header
         initial={{ opacity: 0, y: -100 }}
@@ -49,7 +43,9 @@ export function Overlay() {
                   duration: 0.3,
                 }}
               >
-                <h1 className="text-sm">MATTEO DANTE AI</h1>
+                <h1>
+                  MATTEO DANTE <i>AI</i>
+                </h1>
               </motion.div>
               <div className="support--content">
                 <motion.div

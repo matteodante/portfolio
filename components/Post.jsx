@@ -3,11 +3,13 @@ import { easing } from "maath";
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { GlitchMode } from "postprocessing";
+import Stars from "./Stars";
 
 export default function Post({ children }) {
   const ref = useRef();
   return (
     <EffectComposer>
+      <Stars />
       <Glitch
         delay={[3, 4]} // min and max glitch delay
         duration={[0.6, 1.0]} // min and max glitch duration

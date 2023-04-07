@@ -21,7 +21,7 @@ import { Michelle } from "./Michelle";
 const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
   const [Sucks, degrade] = useState(false);
   return (
-    <div className="h-screen w-screen">
+    <>
       <Canvas
         shadows
         camera={{ position, fov }}
@@ -43,7 +43,7 @@ const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
         </Suspense>
       </Canvas>
       <Loader />
-    </div>
+    </>
   );
 };
 
