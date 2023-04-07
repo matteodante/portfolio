@@ -13,8 +13,14 @@ export function Overlay() {
   };
   return (
     <div
-      className="absolute top-0 left-0 w-screen h-screen"
       onClick={() => (state.animation = (state.animation + 1) % 7)}
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+      }}
     >
       <motion.header
         initial={{ opacity: 0, y: -100 }}
