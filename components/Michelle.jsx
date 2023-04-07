@@ -1,10 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useSnapshot } from "valtio";
-import { useTexture, useAnimations } from "@react-three/drei";
+import { useTexture, useAnimations, Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { state } from "./store";
 import { easing } from "maath";
+import * as THREE from "three";
 
 useGLTF.preload("/Michelle-transformed.glb");
 
@@ -43,6 +44,9 @@ export function Michelle(props) {
               skeleton={nodes.Ch03.skeleton}
               dispose={null}
             />
+            <Html position={[-40, 100, 0]} transform scale={60}>
+              Ciao
+            </Html>
           </group>
         </group>
       </group>
