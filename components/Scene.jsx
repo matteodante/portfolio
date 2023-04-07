@@ -38,7 +38,7 @@ const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
       >
         <ambientLight intensity={0.5} />
         <Environment preset="city" />
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={null}>
           <CameraRig>
             <Backdrop />
             <Center>
@@ -48,6 +48,7 @@ const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
           <Post />
         </Suspense>
       </Canvas>
+      <Loader />
     </div>
   );
 };
