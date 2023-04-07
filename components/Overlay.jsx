@@ -49,9 +49,10 @@ export function Overlay() {
                   duration: 0.3,
                 }}
               >
-                <h1>
-                  MATTEO DANTE <i>AI</i>
-                </h1>
+                <h1>MATTEO DANTE</h1>
+                <h2>
+                  &#129302; AI <span>PORTFOLIO</span>
+                </h2>
               </motion.div>
               <div className="support--content">
                 <motion.div
