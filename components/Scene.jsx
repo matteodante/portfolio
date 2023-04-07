@@ -29,17 +29,16 @@ import { Michelle } from "./Michelle";
 const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
   return (
     <div className="h-screen w-screen">
-      <Suspense fallback={<Loader />}>
-        <Canvas
-          shadows
-          camera={{ position, fov }}
-          gl={{ preserveDrawingBuffer: true }}
-          eventPrefix="client"
-          eventSource={document.getElementById("__next")}
-        >
-          <ambientLight intensity={0.5} />
-          <Environment preset="city" />
-
+      <Canvas
+        shadows
+        camera={{ position, fov }}
+        gl={{ preserveDrawingBuffer: true }}
+        eventPrefix="client"
+        eventSource={document.getElementById("__next")}
+      >
+        <ambientLight intensity={0.5} />
+        <Environment preset="city" />
+        <Suspense fallback={<Loader />}>
           <CameraRig>
             <Backdrop />
             <Center>
@@ -47,8 +46,8 @@ const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
             </Center>
           </CameraRig>
           <Post />
-        </Canvas>
-      </Suspense>
+        </Suspense>
+      </Canvas>
     </div>
   );
 };
