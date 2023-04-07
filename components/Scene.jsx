@@ -1,4 +1,4 @@
-import { useRef, useEffect, Suspense } from "react";
+import { useRef, useEffect, Suspense, useState } from "react";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
 import {
   useGLTF,
@@ -14,6 +14,7 @@ import {
   ContactShadows,
   Stage,
   Float,
+  PerformanceMonitor,
 } from "@react-three/drei";
 import { easing } from "maath";
 import { useSnapshot } from "valtio";
@@ -27,6 +28,7 @@ import { Avatar } from "./Avatar";
 import { Michelle } from "./Michelle";
 
 const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
+  const [Sucks, degrade] = useState(false);
   return (
     <div className="h-screen w-screen">
       <Canvas
@@ -36,8 +38,9 @@ const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
         eventPrefix="client"
         eventSource={document.getElementById("__next")}
       >
+        <PerformanceMonitor onDecline={degrade} />
         <ambientLight intensity={0.5} />
-        <Environment preset="city" />
+        <Environment near={1} far={1000} resolution={1024} preset="sunset" />
         <Suspense fallback={null}>
           <CameraRig>
             <Backdrop />
@@ -45,7 +48,7 @@ const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
               <Michelle />
             </Center>
           </CameraRig>
-          <Post />
+          {!Sucks && <Post />}
         </Suspense>
       </Canvas>
       <Loader />
@@ -58,13 +61,6 @@ function Backdrop() {
   useFrame((state, delta) => {});
   return (
     <>
-      <ContactShadows
-        position={[0, -0.8, 0]}
-        opacity={0.25}
-        scale={10}
-        blur={1.5}
-        far={0.8}
-      />
       <AccumulativeShadows
         ref={shadows}
         temporal
@@ -105,7 +101,7 @@ function CameraRig({ children }) {
     );
     easing.dampE(
       group.current.rotation,
-      [-state.pointer.y / 2.5, state.pointer.x, 0],
+      [-state.pointer.y / 3.5, state.pointer.x / 2, 0],
       0.25,
       delta
     );
@@ -139,9 +135,6 @@ function Shirt(props) {
     </mesh>
   );
 }
-
-useGLTF.preload("/shirt_baked_collapsed.glb");
-["/react.png", "/three2.png", "/pmndrs.png"].forEach(useTexture.preload);
 
 export default dynamic(() => Promise.resolve(App), {
   ssr: false,
