@@ -1,34 +1,21 @@
-import {
-  EffectComposer,
-  Bloom,
-  DepthOfField,
-  Noise,
-  Vignette,
-  SSAO,
-  SSR,
-  LUT,
-  HueSaturation,
-} from "@react-three/postprocessing";
+import { EffectComposer, Glitch } from "@react-three/postprocessing";
+import { easing } from "maath";
 import { useRef } from "react";
-import { WaterPass } from "three-stdlib";
-import { useFrame, extend, useLoader } from "@react-three/fiber";
-import { Effects } from "@react-three/drei";
-import { LUTCubeLoader } from "postprocessing";
-import { RGBELoader } from "three-stdlib";
-import { TiltShift } from "@react-three/postprocessing";
+import { useFrame } from "@react-three/fiber";
+import { GlitchMode } from "postprocessing";
 
 export default function Post({ children }) {
+  const ref = useRef();
   return (
     <EffectComposer>
-      <DepthOfField
-        focusDistance={0}
-        focalLength={0.02}
-        bokehScale={2}
-        height={480}
+      <Glitch
+        delay={[3, 4]} // min and max glitch delay
+        duration={[0.6, 1.0]} // min and max glitch duration
+        strength={[0.3, 0.6]} // min and max glitch strength
+        mode={GlitchMode.SPORADIC} // glitch mode
+        active // turn on/off the effect (switches between "mode" prop and GlitchMode.DISABLED)
+        ratio={0.4} // Threshold for strong glitches, 0 - no weak glitches, 1 - no strong glitches.
       />
-      <SSAO />
-      <Vignette />
-      <HueSaturation />
     </EffectComposer>
   );
 }
