@@ -25,7 +25,8 @@
     "react-dom": "18.2.0",
     "react-icons": "4.7.1",
     "three": "0.150.1",
-    "valtio": "1.10.3"
+    "valtio": "1.10.3",
+    "zustand": "^4.3.7"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",

@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
   useGLTF,
@@ -9,6 +9,7 @@ import {
   Environment,
   Center,
   OrbitControls,
+  Loader,
 } from "@react-three/drei";
 import { easing } from "maath";
 import { useSnapshot } from "valtio";
@@ -17,27 +18,32 @@ import dynamic from "next/dynamic";
 import { Character } from "./Character";
 import Post from "./Post";
 import Soldier from "./Soldier";
+import Droide from "./Droide";
+import { Avatar } from "./Avatar";
+import { Michelle } from "./Michelle";
 
 const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
   return (
     <div className="h-screen w-screen">
-      <Canvas
-        shadows
-        camera={{ position, fov }}
-        gl={{ preserveDrawingBuffer: true }}
-        eventPrefix="client"
-        eventSource={document.getElementById("__next")}
-      >
-        <ambientLight intensity={0.5} />
-        <Environment preset="city" />
-        <CameraRig>
-          <Backdrop />
-          <Center>
-            <Soldier />
-          </Center>
-        </CameraRig>
-        <Post />
-      </Canvas>
+      <Suspense fallback={<Loader />}>
+        <Canvas
+          shadows
+          camera={{ position, fov }}
+          gl={{ preserveDrawingBuffer: true }}
+          eventPrefix="client"
+          eventSource={document.getElementById("__next")}
+        >
+          <ambientLight intensity={0.5} />
+          <Environment preset="city" />
+          <CameraRig>
+            <Backdrop />
+            <Center>
+              <Michelle />
+            </Center>
+          </CameraRig>
+          <Post />
+        </Canvas>
+      </Suspense>
     </div>
   );
 };
@@ -60,7 +66,7 @@ function Backdrop() {
       alphaTest={0.85}
       scale={10}
       rotation={[Math.PI / 2, 0, 0]}
-      position={[0, 0, -0.14]}
+      position={[0, 0, -0.2]}
     >
       <RandomizedLight
         amount={7}

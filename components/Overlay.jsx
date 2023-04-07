@@ -13,6 +13,7 @@ export function Overlay() {
   };
   return (
     <div
+      onClick={() => (state.animation = (state.animation + 1) % 7)}
       style={{
         position: "absolute",
         top: 0,
