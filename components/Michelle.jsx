@@ -46,7 +46,7 @@ export function Michelle(props) {
               skeleton={nodes.Ch03.skeleton}
               dispose={null}
             />
-            <Html position={[0, 100, 0]} transform scale={10}>
+            <Html position={[0, 100, 50]} transform scale={10}>
               <Says />
             </Html>
           </group>

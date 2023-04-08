@@ -223,6 +223,10 @@ input[type="text"] {
   width: 300px;
 }
 
+input::placeholder {
+  font-family: "Inter", sans-serif;
+}
+
 button[type="submit"] {
   background-color: #000;
   color: white;
@@ -282,21 +286,13 @@ button[type="submit"] {
   position: relative;
   height: 200px; /* example height */
   width: 300px; /* example width */
-  background-color: trasparent;
-  font-size: 1rem;
-  letter-spacing: px;
-  line-height: ;
-  font-family: "Inter", sans-serif;
-}
-
-.speech-bubble {
-  position: absolute;
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 10px;
   padding: 10px;
   width: 300px;
   max-width: 300px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  font-size: 1rem;
+  font-family: "Inter", sans-serif;
 }
 
 @media screen and (max-width: 700px) {
