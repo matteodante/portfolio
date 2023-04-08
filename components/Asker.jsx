@@ -8,16 +8,13 @@ export default function Asker() {
   };
   return (
     <div className="customizer">
-      <div className="color-options"></div>
-      <div className="ask">
-        <textarea
-          className="ask-textarea"
-          placeholder="Christ bless you!"
-        ></textarea>
-        <div className="ask-button">
-          <button>ASK</button>
+      <div className="color-options">
+        <div class="search-bar">
+          <input type="text" placeholder="Christ bless you!" />
+          <button type="submit">ASK</button>
         </div>
       </div>
+      <div className="ask"></div>
       <button className="exit" onClick={() => (state.intro = true)}>
         GO BACK
       </button>
