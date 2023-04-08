@@ -33,13 +33,19 @@ const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
           <PerformanceMonitor onDecline={degrade} />
           <ambientLight intensity={0.5} />
           <Environment near={1} far={1000} resolution={1024} preset="sunset" />
-          <CameraRig>
-            <Backdrop />
+          {Sucks ? (
             <Center>
               <Michelle />
             </Center>
-          </CameraRig>
-          {!Sucks && <Post />}
+          ) : (
+            <CameraRig>
+              <Backdrop />
+              <Center>
+                <Michelle />
+              </Center>
+              <Post />
+            </CameraRig>
+          )}
         </Canvas>
       </Suspense>
     </>
