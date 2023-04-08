@@ -2,6 +2,7 @@ import { Logo } from "@pmndrs/branding";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
+import Asker from "./Asker";
 
 export function Overlay() {
   const snap = useSnapshot(state);
@@ -82,7 +83,7 @@ export function Overlay() {
           </motion.section>
         ) : (
           <motion.section key="custom" {...config}>
-            <Customizer />
+            <Asker />
           </motion.section>
         )}
       </AnimatePresence>

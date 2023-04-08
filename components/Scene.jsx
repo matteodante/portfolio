@@ -22,17 +22,17 @@ const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
   const [Sucks, degrade] = useState(false);
   return (
     <>
-      <Canvas
-        shadows
-        camera={{ position, fov }}
-        gl={{ preserveDrawingBuffer: true }}
-        eventPrefix="client"
-        eventSource={document.getElementById("__next")}
-      >
-        <PerformanceMonitor onDecline={degrade} />
-        <ambientLight intensity={0.5} />
-        <Environment near={1} far={1000} resolution={1024} preset="sunset" />
-        <Suspense fallback={null}>
+      <Suspense fallback={<Loader />}>
+        <Canvas
+          shadows
+          camera={{ position, fov }}
+          gl={{ preserveDrawingBuffer: true }}
+          eventPrefix="client"
+          eventSource={document.getElementById("__next")}
+        >
+          <PerformanceMonitor onDecline={degrade} />
+          <ambientLight intensity={0.5} />
+          <Environment near={1} far={1000} resolution={1024} preset="sunset" />
           <CameraRig>
             <Backdrop />
             <Center>
@@ -40,9 +40,8 @@ const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
             </Center>
           </CameraRig>
           {!Sucks && <Post />}
-        </Suspense>
-      </Canvas>
-      <Loader />
+        </Canvas>
+      </Suspense>
     </>
   );
 };
