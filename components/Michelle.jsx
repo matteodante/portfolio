@@ -1,7 +1,14 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useSnapshot } from "valtio";
-import { useTexture, useAnimations, Html, Text } from "@react-three/drei";
+import {
+  useTexture,
+  useAnimations,
+  Html,
+  Text,
+  Center,
+  Text3D,
+} from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { state } from "./store";
 import { easing } from "maath";
@@ -46,13 +53,23 @@ export function Michelle(props) {
               skeleton={nodes.Ch03.skeleton}
               dispose={null}
             />
-
-            <Html position={[0, 100, 50]} transform scale={10}>
-              <Says />
-            </Html>
           </group>
         </group>
       </group>
+
+      <Text3D
+        position={[0, 0, 100]}
+        curveSegments={64}
+        bevelSize={0.04}
+        bevelThickness={0.1}
+        height={2}
+        lineHeight={0.5}
+        letterSpacing={-0.06}
+        size={10}
+        font="/Inter_Bold.json"
+      >
+        {`hello\nworld`}
+      </Text3D>
     </group>
   );
 }
@@ -60,22 +77,5 @@ export function Michelle(props) {
 function Says(props) {
   const snap = useSnapshot(state);
   const transition = { type: "spring", duration: 0.8 };
-  const config = {
-    initial: {
-      x: -100,
-      opacity: 0,
-      transition: { ...transition, delay: 0.5 },
-    },
-    animate: { x: 0, opacity: 1, transition: { ...transition, delay: 0 } },
-    exit: { x: -100, opacity: 0, transition: { ...transition, delay: 0 } },
-  };
-  return (
-    <>
-      {snap.intro ? (
-        <motion.section key="main" {...config}></motion.section>
-      ) : (
-        <motion.section key="custom" {...config}></motion.section>
-      )}
-    </>
-  );
+  return <>{snap.intro ? <div>Intro</div> : <div>Asker</div>}</>;
 }
