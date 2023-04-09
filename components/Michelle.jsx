@@ -47,15 +47,9 @@ export function Michelle(props) {
               dispose={null}
             />
 
-            <Text
-              position={[0, 100, 50]}
-              color="black"
-              anchorX="center"
-              anchorY="middle"
-              scale={10}
-            >
-              hello world!
-            </Text>
+            <Html position={[0, 100, 50]} transform scale={10}>
+              <Says />
+            </Html>
           </group>
         </group>
       </group>

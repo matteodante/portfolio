@@ -8,6 +8,7 @@ export default function Asker() {
   };
   return (
     <div className="customizer">
+      <div>dsadasdsadasasddasda</div>
       <div className="color-options">
         <div class="search-bar">
           <input type="text" placeholder="Christ bless you!" />
