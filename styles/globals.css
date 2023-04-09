@@ -211,7 +211,7 @@ button:hover {
   right: 40px;
 }
 
-.search-bar {
+.ask-bar {
   display: flex;
   align-items: center;
 }
@@ -264,7 +264,7 @@ button[type="submit"] {
   height: 120px !important;
 }
 
-.color-options {
+.ask-section {
   display: flex;
   gap: 10px;
   margin-bottom: 12px;
@@ -315,5 +315,13 @@ button[type="submit"] {
 
   input[type="text"] {
     width: 200px;
+  }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select,
+  textarea,
+  input {
+    font-size: 16px;
   }
 }

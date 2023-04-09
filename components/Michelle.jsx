@@ -74,18 +74,7 @@ function Says(props) {
       {snap.intro ? (
         <motion.section key="main" {...config}></motion.section>
       ) : (
-        <motion.section key="custom" {...config}>
-          <div className="speech-container">
-            <div className="speech-bubble">
-              <p>
-                Hello and welcome to my website! I&apos;m the Matteo&apos;s AI
-                assistant here to help you learn more about me and my
-                professional background. Please let me know how I can assist you
-                today!
-              </p>
-            </div>
-          </div>
-        </motion.section>
+        <motion.section key="custom" {...config}></motion.section>
       )}
     </>
   );
