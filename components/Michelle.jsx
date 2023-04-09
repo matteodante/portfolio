@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useSnapshot } from "valtio";
-import { useTexture, useAnimations, Html } from "@react-three/drei";
+import { useTexture, useAnimations, Html, Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { state } from "./store";
 import { easing } from "maath";
@@ -46,9 +46,16 @@ export function Michelle(props) {
               skeleton={nodes.Ch03.skeleton}
               dispose={null}
             />
-            <Html position={[0, 100, 50]} transform scale={10}>
-              <Says />
-            </Html>
+
+            <Text
+              position={[0, 100, 50]}
+              color="black"
+              anchorX="center"
+              anchorY="middle"
+              scale={10}
+            >
+              hello world!
+            </Text>
           </group>
         </group>
       </group>
@@ -69,7 +76,7 @@ function Says(props) {
     exit: { x: -100, opacity: 0, transition: { ...transition, delay: 0 } },
   };
   return (
-    <AnimatePresence>
+    <>
       {snap.intro ? (
         <motion.section key="main" {...config}></motion.section>
       ) : (
@@ -86,6 +93,6 @@ function Says(props) {
           </div>
         </motion.section>
       )}
-    </AnimatePresence>
+    </>
   );
 }
