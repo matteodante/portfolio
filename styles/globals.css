@@ -193,6 +193,16 @@ button:hover {
   font-size: 20px;
   text-align: center;
   max-height: 80%;
+  overflow-y: scroll;
+}
+
+.response-section::-webkit-scrollbar {
+  display: none;
+}
+
+.response-section {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .ask-section {

@@ -1,5 +1,6 @@
 import { OpenAIStream } from "../../utils/openAIStream";
 import { RateLimiterMemory } from "rate-limiter-flexible";
+import getPrompt from "../../utils/prompt";
 
 // Checking if the OPENAI_API_KEY environment variable is set and throwing an error if it isn't
 if (!process.env.OPENAI_API_KEY) {
@@ -58,7 +59,7 @@ export default async function handler(req) {
   // Constructing a payload object with the necessary parameters for the OpenAI API
   const payload = {
     model: "gpt-3.5-turbo",
-    messages: [{ role: "user", content: prompt }],
+    messages: getPrompt(prompt),
     temperature: 0.2,
     max_tokens: 500,
     stream: true,
