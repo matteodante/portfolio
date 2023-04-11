@@ -1,7 +1,6 @@
 import { useSnapshot } from "valtio";
 import { state } from "./store";
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useRef, useState, forwardRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Asker() {
   const snap = useSnapshot(state);
