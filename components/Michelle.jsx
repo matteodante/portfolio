@@ -56,26 +56,6 @@ export function Michelle(props) {
           </group>
         </group>
       </group>
-
-      <Text3D
-        position={[0, 0, 100]}
-        curveSegments={64}
-        bevelSize={0.04}
-        bevelThickness={0.1}
-        height={2}
-        lineHeight={0.5}
-        letterSpacing={-0.06}
-        size={10}
-        font="/Inter_Bold.json"
-      >
-        {`hello\nworld`}
-      </Text3D>
     </group>
   );
-}
-
-function Says(props) {
-  const snap = useSnapshot(state);
-  const transition = { type: "spring", duration: 0.8 };
-  return <>{snap.intro ? <div>Intro</div> : <div>Asker</div>}</>;
 }

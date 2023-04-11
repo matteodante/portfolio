@@ -17,9 +17,11 @@
     "@types/three": "0.149.0",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
+    "eventsource-parser": "^1.0.0",
     "framer-motion": "10.0.1",
     "maath": "0.5.2",
     "next": "13.2.4",
+    "openai": "^3.2.1",
     "react": "18.2.0",
     "react-colorful": "5.6.1",
     "react-dom": "18.2.0",
@@ -29,9 +31,11 @@
     "zustand": "^4.3.7"
   },
   "devDependencies": {
+    "@types/node": "18.15.11",
     "autoprefixer": "^10.4.14",
     "next-transpile-modules": "^10.0.0",
     "postcss": "^8.4.21",
-    "tailwindcss": "^3.3.1"
+    "tailwindcss": "^3.3.1",
+    "typescript": "5.0.4"
   }
 }

@@ -182,8 +182,29 @@ button:hover {
   padding-right: 5px;
 }
 
+.response-section {
+  width: 80%;
+  max-width: 450px;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 0.75rem 0.75rem 0 0;
+  background: rgba(255, 255, 255, 0.4);
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
+
+.ask-section {
+  width: 80%;
+  max-width: 450px;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 0 0 0.75rem 0.75rem;
+  background: rgba(255, 255, 255, 0.4);
+}
+
 .ask-textarea {
-  width: 300px;
   height: 50px;
   border: 1px solid #ccc;
   border-radius: 0.75rem;
@@ -211,19 +232,13 @@ button:hover {
   right: 40px;
 }
 
-.ask-bar {
-  display: flex;
-  align-items: center;
-}
-
-input[type="text"] {
+.ask-input {
+  width: 100%;
   padding: 15px;
-  border: 1px solid #ccc;
   border-radius: 5px;
-  width: 300px;
 }
 
-input::placeholder {
+.ask-input::placeholder {
   font-family: "Inter", sans-serif;
 }
 
@@ -264,12 +279,6 @@ button[type="submit"] {
   height: 120px !important;
 }
 
-.ask-section {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
 .exit {
   position: absolute;
   top: 40px;
@@ -280,19 +289,6 @@ button[type="submit"] {
 
 .exit:hover {
   box-shadow: inset -250px 0 0 0 black;
-}
-
-.speech-container {
-  position: relative;
-  height: 200px; /* example height */
-  width: 300px; /* example width */
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 10px;
-  padding: 10px;
-  width: 300px;
-  max-width: 300px;
-  font-size: 1rem;
-  font-family: "Inter", sans-serif;
 }
 
 @media screen and (max-width: 700px) {
@@ -311,10 +307,6 @@ button[type="submit"] {
     letter-spacing: -2px;
     width: 80%;
     line-height: 0.5rem;
-  }
-
-  input[type="text"] {
-    width: 200px;
   }
 }
 

@@ -93,7 +93,11 @@ function CameraRig({ children }) {
   useFrame((state, delta) => {
     easing.damp3(
       state.camera.position,
-      [snap.intro ? -state.viewport.width / 4 : 0, 0, 2],
+      [
+        snap.intro ? -state.viewport.width / 4 : 0,
+        snap.intro ? 0 : 0.1,
+        snap.intro ? 2 : 1,
+      ],
       0.25,
       delta
     );
