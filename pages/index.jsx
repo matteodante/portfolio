@@ -1,6 +1,5 @@
 import Canvas from "../components/Scene";
 import { Overlay } from "../components/Overlay";
-import { Loader } from "@react-three/drei";
 import Head from "next/head";
 
 export default function Home() {

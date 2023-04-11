@@ -1,11 +1,8 @@
 import { useRef, Suspense, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
-  useGLTF,
-  useTexture,
   AccumulativeShadows,
   RandomizedLight,
-  Decal,
   Environment,
   Center,
   Loader,
@@ -19,7 +16,7 @@ import Post from "./Post";
 import { Michelle } from "./Michelle";
 
 const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
-  const [Sucks, degrade] = useState(false);
+  const [GoodPC, upgrade] = useState(false);
   return (
     <>
       <Suspense fallback={<Loader />}>
@@ -30,10 +27,10 @@ const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
           eventPrefix="client"
           eventSource={document.getElementById("__next")}
         >
-          <PerformanceMonitor onDecline={degrade} />
+          <PerformanceMonitor onIncline={upgrade} />
           <ambientLight intensity={0.5} />
           <Environment near={1} far={1000} resolution={1024} preset="sunset" />
-          {Sucks ? (
+          {!GoodPC ? (
             <CameraRig>
               <Center>
                 <Michelle />
