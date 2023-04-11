@@ -1,21 +1,8 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useSnapshot } from "valtio";
-import {
-  useTexture,
-  useAnimations,
-  Html,
-  Text,
-  Center,
-  Text3D,
-} from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { useAnimations } from "@react-three/drei";
 import { state } from "./store";
-import { easing } from "maath";
-import * as THREE from "three";
-import { motion, AnimatePresence } from "framer-motion";
-
-useGLTF.preload("/Michelle-transformed.glb");
 
 export function Michelle(props) {
   const snap = useSnapshot(state);
@@ -23,7 +10,6 @@ export function Michelle(props) {
   const { ref, mixer, names, actions, clips } = useAnimations(animations);
   const html = useRef();
 
-  useFrame((state, delta) => {});
   useEffect(() => {
     actions[names[snap.animation]].reset().fadeIn(0.5).play();
     return () => {
@@ -59,3 +45,5 @@ export function Michelle(props) {
     </group>
   );
 }
+
+useGLTF.preload("/Michelle-transformed.glb");

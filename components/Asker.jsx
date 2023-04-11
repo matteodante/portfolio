@@ -3,8 +3,6 @@ import { state } from "./store";
 import { useEffect, useRef, useState } from "react";
 
 export default function Asker() {
-  const snap = useSnapshot(state);
-
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState("");
 
