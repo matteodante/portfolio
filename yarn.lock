@@ -149,11 +149,6 @@
     tiny-glob "^0.2.9"
     tslib "^2.4.0"
 
-"@pmndrs/branding@0.0.8":
-  version "0.0.8"
-  resolved "https://registry.npmjs.org/@pmndrs/branding/-/branding-0.0.8.tgz"
-  integrity sha512-AIWJJDiUhIWNJqhN+bz1FIlQRURqQDIaJ2FokEIHAJ/k0XIYI6VM5UgVBRupS4YkMXtvdBAYnfsDpFx8C7N4Xw==
-
 "@react-spring/animated@~9.6.1":
   version "9.6.1"
   resolved "https://registry.npmjs.org/@react-spring/animated/-/animated-9.6.1.tgz"
@@ -2044,6 +2039,11 @@ queue-microtask@^1.2.2:
   version "1.2.3"
   resolved "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
+
+rate-limiter-flexible@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.npmjs.org/rate-limiter-flexible/-/rate-limiter-flexible-2.4.1.tgz"
+  integrity sha512-dgH4T44TzKVO9CLArNto62hJOwlWJMLUjVVr/ii0uUzZXEXthDNr7/yefW5z/1vvHAfycc1tnuiYyNJ8CTRB3g==
 
 react-composer@^5.0.3:
   version "5.0.3"

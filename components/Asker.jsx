@@ -1,4 +1,3 @@
-import { useSnapshot } from "valtio";
 import { state } from "./store";
 import { useEffect, useRef, useState } from "react";
 
@@ -11,45 +10,54 @@ export default function Asker() {
   const ask = async (e) => {
     console.log("Asked");
     e.preventDefault();
+
+    if (loading) {
+      return;
+    }
+
     setResponse("");
     setLoading(true);
 
     state.phrase = "Let me think...";
 
-    const response = await fetch("/api/generate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        prompt: inputRef.current.value,
-      }),
-    });
+    try {
+      const response = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          prompt: inputRef.current.value,
+        }),
+      });
 
-    state.phrase = "";
+      state.phrase = "";
+      if (!response.ok) {
+        state.phrase =
+          "I'm sorry but something went wrong. Please try again later.";
+        return;
+      }
 
-    if (!response.ok) {
-      state.phrase =
-        "I'm sorry but something went wrong. Please try again later.";
-      return;
+      const data = response.body;
+      if (!data) {
+        return;
+      }
+
+      const reader = data.getReader();
+      const decoder = new TextDecoder();
+      let done = false;
+
+      while (!done) {
+        const { value, done: doneReading } = await reader.read();
+        done = doneReading;
+        const chunkValue = decoder.decode(value);
+        setResponse((prev) => prev + chunkValue);
+      }
+    } catch (error) {
+      state.phrase = "Please try again later.";
+    } finally {
+      setLoading(false);
     }
-
-    const data = response.body;
-    if (!data) {
-      return;
-    }
-
-    const reader = data.getReader();
-    const decoder = new TextDecoder();
-    let done = false;
-
-    while (!done) {
-      const { value, done: doneReading } = await reader.read();
-      done = doneReading;
-      const chunkValue = decoder.decode(value);
-      setResponse((prev) => prev + chunkValue);
-    }
-    setLoading(false);
   };
 
   return (
