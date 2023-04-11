@@ -61,7 +61,7 @@ export default async function handler(req) {
     model: "gpt-3.5-turbo",
     messages: getPrompt(prompt),
     temperature: 0.2,
-    max_tokens: 500,
+    max_tokens: 300,
     stream: true,
     n: 1,
   };
