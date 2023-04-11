@@ -24,11 +24,10 @@ export default async function handler(req) {
   const payload = {
     model: "gpt-3.5-turbo",
     messages: [{ role: "user", content: prompt }],
-    temperature: 0.7,
-    top_p: 1,
+    temperature: 0.2,
     frequency_penalty: 0,
     presence_penalty: 0,
-    max_tokens: 1000,
+    max_tokens: 100,
     stream: true,
     n: 1,
   };

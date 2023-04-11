@@ -7,15 +7,17 @@ export default function Asker() {
   const snap = useSnapshot(state);
 
   const [loading, setLoading] = useState(false);
-  const [response, setResponse] = useState(state.phrase);
+  const [response, setResponse] = useState("");
 
   const inputRef = useRef();
 
   const ask = async (e) => {
     console.log("Asked");
     e.preventDefault();
-    setResponse("Let me think...");
+    setResponse("");
     setLoading(true);
+
+    state.phrase = "Let me think...";
 
     const response = await fetch("/api/generate", {
       method: "POST",
@@ -27,10 +29,11 @@ export default function Asker() {
       }),
     });
 
+    state.phrase = "";
+
     if (!response.ok) {
-      setResponse(
-        "I'm sorry but something went wrong. Please try again later."
-      );
+      state.phrase =
+        "I'm sorry but something went wrong. Please try again later.";
       return;
     }
 
@@ -55,7 +58,8 @@ export default function Asker() {
   return (
     <div className="customizer">
       <div className="response-section">
-        <Typewriter text={response} />
+        <Typewriter text={state.phrase} />
+        <p>{response}</p>
       </div>
       <div className="ask-section">
         <input
