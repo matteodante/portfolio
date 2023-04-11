@@ -7,6 +7,7 @@ import {
   Center,
   Loader,
   PerformanceMonitor,
+  AdaptiveDpr,
 } from "@react-three/drei";
 import { easing } from "maath";
 import { useSnapshot } from "valtio";
@@ -30,6 +31,7 @@ const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
           <PerformanceMonitor onIncline={upgrade} />
           <ambientLight intensity={0.5} />
           <Environment near={1} far={1000} resolution={1024} preset="sunset" />
+          <AdaptiveDpr pixelated />
           {!GoodPC ? (
             <CameraRig>
               <Center>
@@ -108,6 +110,4 @@ function CameraRig({ children }) {
   return <group ref={group}>{children}</group>;
 }
 
-export default dynamic(() => Promise.resolve(App), {
-  ssr: false,
-});
+export default App;

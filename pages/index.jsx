@@ -1,6 +1,11 @@
-import Canvas from "../components/Scene";
+//import Canvas from "../components/Scene";
 import { Overlay } from "../components/Overlay";
 import Head from "next/head";
+import dynamic from "next/dynamic";
+
+const Canvas = dynamic(() => import("../components/Scene"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
