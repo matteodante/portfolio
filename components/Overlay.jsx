@@ -1,4 +1,3 @@
-import { Logo } from "@pmndrs/branding";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
@@ -28,7 +27,6 @@ export function Overlay() {
         animate={{ opacity: 1, y: 0 }}
         transition={transition}
       >
-        <Logo width="40" height="40" />
         <motion.div
           animate={{ x: snap.intro ? 0 : 100, opacity: snap.intro ? 1 : 0 }}
           transition={transition}
