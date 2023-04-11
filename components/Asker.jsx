@@ -1,9 +1,10 @@
+import { useSnapshot } from "valtio";
 import { state } from "./store";
 import { useEffect, useRef, useState } from "react";
 
 export default function Asker() {
+  const snap = useSnapshot(state);
   const [loading, setLoading] = useState(false);
-  const [response, setResponse] = useState("");
 
   const inputRef = useRef();
 
@@ -15,9 +16,8 @@ export default function Asker() {
       return;
     }
 
-    setResponse("");
     setLoading(true);
-
+    state.currentResponse = "";
     state.phrase = "Let me think...";
 
     try {
@@ -51,7 +51,7 @@ export default function Asker() {
         const { value, done: doneReading } = await reader.read();
         done = doneReading;
         const chunkValue = decoder.decode(value);
-        setResponse((prev) => prev + chunkValue);
+        state.currentResponse += chunkValue;
       }
     } catch (error) {
       state.phrase = "Please try again later.";
@@ -60,11 +60,19 @@ export default function Asker() {
     }
   };
 
+  const exit = () => {
+    state.intro = true;
+    if (loading) {
+      state.phrase = "What were we talking about?";
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="customizer">
       <div className="response-section">
         <Typewriter text={state.phrase} />
-        <p>{response}</p>
+        <p>{state.currentResponse}</p>
       </div>
       <div className="ask-section">
         <input
@@ -78,7 +86,7 @@ export default function Asker() {
         </button>
       </div>
       <div className="ask"></div>
-      <button className="exit" onClick={() => (state.intro = true)}>
+      <button className="exit" onClick={exit}>
         GO BACK
       </button>
     </div>
