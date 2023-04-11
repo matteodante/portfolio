@@ -1,4 +1,4 @@
-import { OpenAIStream, OpenAIStreamPayload } from "../../utils/openAIStream";
+import { OpenAIStream } from "../../utils/openAIStream";
 
 if (!process.env.OPENAI_API_KEY) {
   throw new Error("Missing env var from OpenAI");
@@ -13,6 +13,7 @@ export default async function handler(req) {
   try {
     const { prompt: reqPrompt } = await req.json();
     prompt = reqPrompt;
+    console.log("Got prompt", prompt);
   } catch (err) {
     return new Response("Invalid JSON data in the request", { status: 400 });
   }
