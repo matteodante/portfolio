@@ -79,7 +79,7 @@ export default function Asker() {
           ref={inputRef}
           className="ask-input"
           type="text"
-          placeholder="Christ bless you!"
+          placeholder="Tell me about Matteo..."
         />
         <button onClick={ask} type="submit">
           ASK
