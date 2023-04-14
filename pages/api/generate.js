@@ -60,7 +60,7 @@ export default async function handler(req) {
   const payload = {
     model: "gpt-3.5-turbo",
     messages: getPrompt(prompt),
-    temperature: 0.2,
+    temperature: 0.6,
     max_tokens: 300,
     stream: true,
     n: 1,
@@ -68,6 +68,8 @@ export default async function handler(req) {
 
   // Calling the OpenAIStream utility function with the payload object and storing the returned stream in the stream variable
   const stream = await OpenAIStream(payload);
+
+  console.log(stream);
 
   // Returning a Response object with the stream as the body
   return new Response(stream);
