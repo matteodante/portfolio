@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
 import Asker from "./Asker";
+import Resume from "./Resume";
 
 export function Overlay() {
   const snap = useSnapshot(state);
@@ -10,6 +11,16 @@ export function Overlay() {
     initial: { x: -100, opacity: 0, transition: { ...transition, delay: 0.5 } },
     animate: { x: 0, opacity: 1, transition: { ...transition, delay: 0 } },
     exit: { x: -100, opacity: 0, transition: { ...transition, delay: 0 } },
+  };
+
+  const configResume = {
+    initial: {
+      y: -100,
+      opacity: 0,
+      transition: { ...transition, delay: 0.5 },
+    },
+    animate: { y: 0, opacity: 1, transition: { ...transition, delay: 0 } },
+    exit: { y: -100, opacity: 0, transition: { ...transition, delay: 0 } },
   };
   return (
     <div
@@ -37,9 +48,13 @@ export function Overlay() {
           <motion.section key="main" {...config}>
             <Introducing />
           </motion.section>
-        ) : (
+        ) : snap.chat ? (
           <motion.section key="custom" {...config}>
             <Asker />
+          </motion.section>
+        ) : (
+          <motion.section key="resume" {...configResume}>
+            <Resume />
           </motion.section>
         )}
       </AnimatePresence>

@@ -43,6 +43,7 @@ export async function OpenAIStream(payload) {
           try {
             // Parse the JSON data and get the text from the first choice
             const json = JSON.parse(data);
+            console.log(json);
             const text = json.choices[0].delta?.content || "";
             // If the counter is less than 2 and the text contains a newline, return without enqueueing the text
             if (counter < 2 && (text.match(/\n/) || []).length) {

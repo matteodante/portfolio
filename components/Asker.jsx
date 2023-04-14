@@ -1,11 +1,18 @@
 import { useSnapshot } from "valtio";
 import { state } from "./store";
 import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Asker() {
   const snap = useSnapshot(state);
   const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const inputRef = useRef();
+
+  const variants = {
+    open: { opacity: 1, y: 0 },
+    closed: { opacity: 0, y: "-100%" },
+  };
 
   const ask = async (e) => {
     console.log("Asked");
@@ -14,7 +21,11 @@ export default function Asker() {
     if (loading) {
       return;
     }
+    if (inputRef.current.value.length < 1) {
+      return;
+    }
 
+    setIsOpen(true);
     setLoading(true);
     state.currentResponse = "";
     state.phrase = "Let me think...";
@@ -71,10 +82,10 @@ export default function Asker() {
 
   return (
     <div className="customizer">
-      <div className="response-section">
+      <motion.div className="response-section">
         <Typewriter text={state.phrase} />
         <p>{state.currentResponse}</p>
-      </div>
+      </motion.div>
       <div className="ask-section">
         <input
           ref={inputRef}
@@ -86,7 +97,11 @@ export default function Asker() {
           ASK
         </button>
       </div>
-      <div className="ask"></div>
+      <div className="ask">
+        <button className="ask-button" onClick={() => (state.chat = false)}>
+          RESUME
+        </button>
+      </div>
       <button className="exit" onClick={exit}>
         GO BACK
       </button>
