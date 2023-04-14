@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 export default function Asker() {
   const snap = useSnapshot(state);
   const [loading, setLoading] = useState(false);
-
   const inputRef = useRef();
 
   const ask = async (e) => {
@@ -21,13 +20,14 @@ export default function Asker() {
     state.phrase = "Let me think...";
 
     try {
+      state.story = [...state.story, inputRef.current.value];
       const response = await fetch("/api/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          prompt: inputRef.current.value,
+          prompt: state.story,
         }),
       });
 
@@ -55,6 +55,7 @@ export default function Asker() {
       }
     } catch (error) {
       state.phrase = "Please try again later.";
+      console.log(error.message);
     } finally {
       setLoading(false);
     }
