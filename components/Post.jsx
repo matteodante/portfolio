@@ -6,7 +6,6 @@ import { GlitchMode } from "postprocessing";
 import Stars from "./Stars";
 
 export default function Post({ children }) {
-  const ref = useRef();
   return (
     <EffectComposer>
       <Stars />
