@@ -8,19 +8,19 @@ export function Overlay() {
   const snap = useSnapshot(state);
   const transition = { type: "spring", duration: 0.8 };
   const config = {
-    initial: { x: -100, opacity: 0, transition: { ...transition, delay: 0.5 } },
-    animate: { x: 0, opacity: 1, transition: { ...transition, delay: 0 } },
-    exit: { x: -100, opacity: 0, transition: { ...transition, delay: 0 } },
+    initial: { y: -100, opacity: 0, transition: { ...transition, delay: 0.5 } },
+    animate: { y: 0, opacity: 1, transition: { ...transition, delay: 0 } },
+    exit: { y: -100, opacity: 0, transition: { ...transition, delay: 0 } },
   };
 
   const configResume = {
     initial: {
-      y: -100,
+      y: 100,
       opacity: 0,
       transition: { ...transition, delay: 0.5 },
     },
     animate: { y: 0, opacity: 1, transition: { ...transition, delay: 0 } },
-    exit: { y: -100, opacity: 0, transition: { ...transition, delay: 0 } },
+    exit: { y: 100, opacity: 0, transition: { ...transition, delay: 0 } },
   };
   return (
     <div

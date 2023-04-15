@@ -12,7 +12,7 @@ import {
 import { easing } from "maath";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
-import dynamic from "next/dynamic";
+import About from "./About";
 import Post from "./Post";
 import { Michelle } from "./Michelle";
 
@@ -94,15 +94,19 @@ function CameraRig({ children }) {
       state.camera.position,
       [
         snap.intro ? -state.viewport.width / 4 : 0,
-        snap.intro ? 0 : 0.1,
-        snap.intro ? 2 : 1,
+        snap.intro ? 0 : snap.chat ? 0.1 : 0.1,
+        snap.intro ? 2 : snap.chat ? 1 : 8,
       ],
       0.25,
       delta
     );
     easing.dampE(
       group.current.rotation,
-      [-state.pointer.y / 3.5, state.pointer.x / 2, 0],
+      [
+        state.chat ? -state.pointer.y / 3.5 : 0,
+        state.chat ? state.pointer.x / 2 : 0,
+        0,
+      ],
       0.25,
       delta
     );
