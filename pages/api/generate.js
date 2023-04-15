@@ -60,7 +60,7 @@ export default async function handler(req) {
   const payload = {
     model: "gpt-3.5-turbo",
     messages: getPrompt(prompt.slice(-1)),
-    temperature: 0.6,
+    temperature: 0.4,
     max_tokens: 300,
     stream: true,
     n: 1,
