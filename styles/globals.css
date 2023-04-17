@@ -309,9 +309,9 @@ button[type="submit"] {
 }
 
 .resume {
-  width: 60%;
+  width: 80%;
   height: 80%;
-  max-width: 600px;
+  max-width: 900px;
   gap: 10px;
   padding: 10px;
   border-radius: 0.75rem 0.75rem 0 0;
@@ -360,6 +360,27 @@ button[type="submit"] {
   font-weight: 200;
   font-style: normal;
   font-family: "Inter", sans-serif;
+}
+
+.resume li {
+  list-style: none;
+  position: relative;
+  padding: 3px 0 2px 25px;
+  font-weight: 200;
+  font-style: normal;
+  font-family: "Inter", sans-serif;
+}
+
+.resume li::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: -10px;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  background-size: contain;
+  background-image: url("/check.png");
 }
 
 .cover-photo {
