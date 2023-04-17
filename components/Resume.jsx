@@ -1,26 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRef } from "react";
 import { state } from "./store";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Resume() {
   const ref = useRef();
+  const { locales } = useRouter();
 
   return (
     <div className="customizer">
       <div className="locales">
         <div className="color-options">
-          <div
-            className={`circle`}
-            style={{ background: `url("/it.png")` }}
-          ></div>
-          <div
-            className={`circle`}
-            style={{ background: `url("/en.png")` }}
-          ></div>
-          <div
-            className={`circle`}
-            style={{ background: `url("/se.png")` }}
-          ></div>
+          {[...locales].sort().map((locale) => (
+            <Link key={locale} href="/" locale={locale}>
+              <div
+                className={`circle`}
+                style={{ background: `url("/${locale}.png")` }}
+              ></div>
+            </Link>
+          ))}
         </div>
       </div>
       <button className="exit" onClick={() => (state.chat = true)}>
