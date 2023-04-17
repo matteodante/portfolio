@@ -3,6 +3,8 @@ import { useSnapshot } from "valtio";
 import { state } from "./store";
 import Asker from "./Asker";
 import Resume from "./Resume";
+import { useRouter } from "next/router";
+import { FormattedMessage } from "react-intl";
 
 export function Overlay() {
   const snap = useSnapshot(state);
@@ -103,7 +105,7 @@ function Introducing() {
             style={{ background: snap.color, width: "auto" }}
             onClick={() => (state.intro = false)}
           >
-            ASK ME SOMETHING
+            <FormattedMessage id="page.home.button" />
           </button>
         </motion.div>
       </div>
