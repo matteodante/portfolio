@@ -8,7 +8,7 @@ export default function Resume() {
       <button className="exit" onClick={() => (state.chat = true)}>
         GO BACK
       </button>
-      <button className="download">DOWNLOAD</button>
+      <button className="download">SAVE IT</button>
       <div className="resume">
         <div className="cover-photo">
           <img src="/me.jpeg" className="profile" alt="me" />

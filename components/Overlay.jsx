@@ -100,7 +100,7 @@ function Introducing() {
         >
           <p></p>
           <button
-            style={{ background: snap.color }}
+            style={{ background: snap.color, width: "auto" }}
             onClick={() => (state.intro = false)}
           >
             ASK ME SOMETHING

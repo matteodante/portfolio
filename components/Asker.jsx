@@ -98,9 +98,7 @@ export default function Asker() {
         </button>
       </div>
       <div className="ask">
-        <button className="ask-button" onClick={() => (state.chat = false)}>
-          RESUME
-        </button>
+        <button onClick={() => (state.chat = false)}>RESUME</button>
       </div>
       <button className="exit" onClick={exit}>
         GO BACK
