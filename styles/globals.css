@@ -296,6 +296,12 @@ button[type="submit"] {
   box-shadow: inset 0 0 0 0.09px black;
 }
 
+.locales {
+  position: absolute;
+  top: 40px;
+  justify-content: center;
+}
+
 .download {
   position: absolute;
   top: 40px;
@@ -433,6 +439,19 @@ button[type="submit"] {
   text-align: center;
 }
 
+.color-options {
+  display: flex;
+  gap: 10px;
+}
+
+.circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background-size: contain;
+}
+
 @media screen and (max-width: 700px) {
   .section--container {
     margin-left: 10px;
@@ -453,6 +472,10 @@ button[type="submit"] {
 
   .resume {
     width: 100%;
+  }
+
+  .locales {
+    display: none;
   }
 }
 

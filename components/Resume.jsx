@@ -7,6 +7,22 @@ export default function Resume() {
 
   return (
     <div className="customizer">
+      <div className="locales">
+        <div className="color-options">
+          <div
+            className={`circle`}
+            style={{ background: `url("/it.png")` }}
+          ></div>
+          <div
+            className={`circle`}
+            style={{ background: `url("/en.png")` }}
+          ></div>
+          <div
+            className={`circle`}
+            style={{ background: `url("/se.png")` }}
+          ></div>
+        </div>
+      </div>
       <button className="exit" onClick={() => (state.chat = true)}>
         GO BACK
       </button>
