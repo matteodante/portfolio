@@ -1,15 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
+import { useRef } from "react";
 import { state } from "./store";
-import Image from "next/image";
 
 export default function Resume() {
+  const ref = useRef();
+
   return (
     <div className="customizer">
       <button className="exit" onClick={() => (state.chat = true)}>
         GO BACK
       </button>
-      <button className="download">SAVE IT</button>
-      <div className="resume">
+      <a href="/matteo-dante-resume.pdf" download>
+        <button className="download">SAVE IT</button>
+      </a>
+      <div ref={ref} id="resume" className="resume">
         <div className="cover-photo">
           <img src="/me.jpeg" className="profile" alt="me" />
         </div>
@@ -23,7 +27,7 @@ export default function Resume() {
             Hi, I&apos;m Matteo Dante, a 24-year-old full-stack developer with 5
             years of experience. Throughout my career, I have gained a strong
             understanding of backend and frontend development using programming
-            languages such as Python, PHP, and Javascript. I&apos;m also
+            languages such as Python, PHP, Javascript etc... I&apos;m also
             proficient in popular frontend frameworks like React and Vue. My
             expertise in software engineering principles, design patterns,
             algorithms, and data structures enables me to deliver high-quality
