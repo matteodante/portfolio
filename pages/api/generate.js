@@ -31,7 +31,6 @@ export default async function handler(req) {
   try {
     await rateLimiter.consume(getIP(req));
   } catch (rateLimiterRes) {
-    console.log(rateLimiterRes);
     // If the request is over the rate limit, returning a 429 Too Many Requests response
     return new Response(null, {
       status: 429,

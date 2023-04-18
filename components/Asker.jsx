@@ -75,7 +75,6 @@ export default function Asker() {
       }
     } catch (error) {
       state.phrase = "Please try again later.";
-      console.log(error.message);
     } finally {
       setLoading(false);
     }
