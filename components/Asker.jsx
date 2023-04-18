@@ -9,9 +9,18 @@ export default function Asker() {
   const [loading, setLoading] = useState(false);
   const inputRef = useRef();
   const intl = useIntl();
+  const abortControllerRef = useRef(null);
 
   useEffect(() => {
+    const abortController = new AbortController();
+    abortControllerRef.current = abortController;
+
+    state.currentResponse = "";
     state.phrase = intl.formatMessage({ id: "page.home.initconvo" });
+
+    return () => {
+      abortController.abort();
+    };
   }, [intl]);
 
   const ask = async (e) => {
@@ -32,6 +41,7 @@ export default function Asker() {
     try {
       state.story = [...state.story, inputRef.current.value];
       const response = await fetch("/api/generate", {
+        signal: abortControllerRef.current.signal,
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -92,7 +102,7 @@ export default function Asker() {
           type="text"
           placeholder={intl.formatMessage({ id: "page.home.placeholder" })}
         />
-        <button onClick={ask} type="submit">
+        <button onClick={ask} type="submit" disabled={loading}>
           <FormattedMessage id="page.home.ask" />
         </button>
       </div>
