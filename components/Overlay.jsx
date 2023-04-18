@@ -3,7 +3,7 @@ import { useSnapshot } from "valtio";
 import { state } from "./store";
 import Asker from "./Asker";
 import Resume from "./Resume";
-import Languages from "./languages";
+import Languages from "./Languages";
 import { FormattedMessage } from "react-intl";
 
 export function Overlay() {
