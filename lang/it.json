@@ -1,3 +1,25 @@
 {
-    "page.home.button": "CHIEDIMI QUALCOSA"
+    "page.home.resume": "CURRICULUM",
+    "page.home.back": "INDIETRO",
+    "page.home.think": "Fammi pensare ...",
+    "page.home.ask": "CHIEDI",
+    "page.home.save": "SALVA",
+    "page.home.button": "FAMMI UNA DOMANDA",
+    "page.home.initconvo": "Ciao e benvenuto nel mio sito web! Sono l'assistente AI di Matteo qui per aiutarti a conoscere meglio me e la mia esperienza professionale. Per favore fammi sapere come posso assisterti oggi!",
+    "page.home.placeholder": "Parlami di Matteo...",
+    "page.resume.summary": "Ciao, sono Matteo Dante, un full-stack developer di 24 anni con 5 anni di esperienza. Nel corso della mia carriera, ho acquisito una forte comprensione dello sviluppo backend e frontend utilizzando linguaggi di programmazione come Python, PHP, Javascript ecc... Sono anche capace nei popolari framework frontend come React e Vue. La mia esperienza nei principi dell'ingegneria del software, nei pattern di design, negli algoritmi e nelle strutture dati mi consente di fornire soluzioni di sviluppo di alta qualità. Sono appassionato di tecnologia, mantenendomi costantemente aggiornato sulle ultime novità del settore. Fuori dal lavoro, mi piace giocare ai videogiochi, guardare film e fare attività fisica.",
+    "page.resume.skills.1": "Sviluppo backend con Laravel (PHP) e Javascript utilizzando LAMP Stack",
+    "page.resume.skills.2": "Sviluppo frontend con React (NextJS) e Vue",
+    "page.resume.skills.3": "MySQL queries",
+    "page.resume.skills.4": "Principi dell'ingegneria del software, pattern di design, algoritmi e strutture dati",
+    "page.resume.skills.5": "Comprensione dei processi e dei flussi di lavoro aziendali",
+    "page.resume.skills.6": "Esperienza nello sviluppo di software che soddisfa le specifiche esigenze di ogni cliente",
+    "page.resume.education.1": "Istituto Enrico Fermi di Tivoli: studi completati",
+    "page.resume.education.2": "Università La Sapienza: completato il 1° anno di Informatica",
+    "page.resume.experiences.1": "Creato un'interfaccia web user-friendly per interagire con i sistemi IBM",
+    "page.resume.experiences.2": "Sviluppato una buona comprensione della funzionalità dei sistemi e di come integrarli con le tecnologie web",
+    "page.resume.experiences.3": "Sviluppato software di gestione interna e altre applicazioni web per grandi aziende come Sorgenia S.p.A",
+    "page.resume.experiences.4": "Acquisita una forte comprensione dei processi e dei flussi di lavoro aziendali",
+    "page.resume.experiences.5": "Fornito soluzioni di sviluppo di alta qualità per progetti complessi di sviluppo web",
+    "page.resume.outro": "I potenziali titoli di lavoro che sarebbero adatti a me includono Full Stack Developer, Web Developer, Software Engineer o Frontend Developer. Quando si considerano opportunità di lavoro potenziali, è importante cercare posizioni che siano in linea con i miei interessi e la mia esperienza."
 }

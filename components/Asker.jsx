@@ -2,33 +2,32 @@ import { useSnapshot } from "valtio";
 import { state } from "./store";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export default function Asker() {
   const snap = useSnapshot(state);
   const [loading, setLoading] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
   const inputRef = useRef();
+  const intl = useIntl();
 
-  const variants = {
-    open: { opacity: 1, y: 0 },
-    closed: { opacity: 0, y: "-100%" },
-  };
+  useEffect(() => {
+    state.phrase = intl.formatMessage({ id: "page.home.initconvo" });
+  }, [intl]);
 
   const ask = async (e) => {
-    console.log("Asked");
     e.preventDefault();
 
     if (loading) {
       return;
     }
+
     if (inputRef.current.value.length < 1) {
       return;
     }
 
-    setIsOpen(true);
     setLoading(true);
     state.currentResponse = "";
-    state.phrase = "Let me think...";
+    state.phrase = intl.formatMessage({ id: "page.home.think" });
 
     try {
       state.story = [...state.story, inputRef.current.value];
@@ -91,17 +90,19 @@ export default function Asker() {
           ref={inputRef}
           className="ask-input"
           type="text"
-          placeholder="Tell me about Matteo..."
+          placeholder={intl.formatMessage({ id: "page.home.placeholder" })}
         />
         <button onClick={ask} type="submit">
-          ASK
+          <FormattedMessage id="page.home.ask" />
         </button>
       </div>
       <div className="ask">
-        <button onClick={() => (state.chat = false)}>RESUME</button>
+        <button onClick={() => (state.chat = false)}>
+          <FormattedMessage id="page.home.resume" />
+        </button>
       </div>
       <button className="exit" onClick={exit}>
-        GO BACK
+        <FormattedMessage id="page.home.back" />
       </button>
     </div>
   );

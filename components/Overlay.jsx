@@ -3,7 +3,7 @@ import { useSnapshot } from "valtio";
 import { state } from "./store";
 import Asker from "./Asker";
 import Resume from "./Resume";
-import { useRouter } from "next/router";
+import Languages from "./languages";
 import { FormattedMessage } from "react-intl";
 
 export function Overlay() {
@@ -48,14 +48,17 @@ export function Overlay() {
       <AnimatePresence>
         {snap.intro ? (
           <motion.section key="main" {...config}>
+            <Languages />
             <Introducing />
           </motion.section>
         ) : snap.chat ? (
           <motion.section key="custom" {...config}>
+            <Languages />
             <Asker />
           </motion.section>
         ) : (
           <motion.section key="resume" {...configResume}>
+            <Languages />
             <Resume />
           </motion.section>
         )}

@@ -1,3 +1,25 @@
 {
-    "page.home.button": "ASK ME SOMETHING"
+    "page.home.resume": "RESUME",
+    "page.home.back": "GO BACK",
+    "page.home.think": "Let me think ...",
+    "page.home.ask": "ASK",
+    "page.home.save": "SAVE IT",
+    "page.home.button": "ASK ME SOMETHING",
+    "page.home.initconvo": "Hello and welcome to my website! Im the Matteo's AI assistant here to help you learn more about me and my professional background. Please let me know how I can assist you today!",
+    "page.home.placeholder": "Tell me about Matteo ...",
+    "page.resume.summary": "Hi, I'm Matteo Dante, a 24-year-old full-stack developer with 5 years of experience. Throughout my career, I have gained a strong understanding of backend and frontend development using programming languages such as Python, PHP, Javascript etc... I'm also proficient in popular frontend frameworks like React and Vue. My expertise in software engineering principles, design patterns, algorithms, and data structures enables me to deliver high-quality development solutions. I'm passionate about technology, always keeping up to date with the latest developments in the field. Outside of work, I enjoy playing video games, watching movies, and working out.",
+    "page.resume.skills.1": "Backend development with Laravel (PHP) and Javascript using LAMP Stack",
+    "page.resume.skills.2": "Frontend development with React (NextJS) and Vue",
+    "page.resume.skills.3": "Database queries with MySQL",
+    "page.resume.skills.4": "Software engineering principles, design patterns, algorithms, and data structures",
+    "page.resume.skills.5": "Understanding of business processes and workflows",
+    "page.resume.skills.6": "Experience in developing software that meets the specific needs of each client",
+    "page.resume.education.1": "Istitute Enrico Fermi of Tivoli: Completed studies",
+    "page.resume.education.2": "La Sapienza University: Completed 1st year of Computer Science",
+    "page.resume.experiences.1": "Created a user-friendly web interface to interact with IBM systems",
+    "page.resume.experiences.2": "Developed a good understanding of the systems' functionality and how to integrate them with web technologies",
+    "page.resume.experiences.3": "Developed internal management software and other web applications for large companies such as Sorgenia S.p.A",
+    "page.resume.experiences.4": "Gained a strong understanding of business processes and workflows",
+    "page.resume.experiences.5": "Delivered high-quality development solutions for complex web development projects",
+    "page.resume.outro": "Potential job titles that would be a good fit for me include Full Stack Developer, Web Developer, Softwar Engineer, or Frontend Developer. When considering potential job opportunities, it's important to look for positions that align with my interests and expertise."
 }
