@@ -17,10 +17,6 @@ export default function Resume() {
         <div className="cover-photo">
           <img src="/me.jpeg" className="profile" alt="me" />
         </div>
-        <div className="resume-body">
-          <h3 className="profile-name">Matteo Dante</h3>
-          <p className="about">Full Stack Developer</p>
-        </div>
         <div className="description">
           <h5>Summary</h5>
           <p>
@@ -90,6 +86,13 @@ export default function Resume() {
           <p>
             <FormattedMessage id="page.resume.outro" />
           </p>
+          <div className="resume-body">
+            <h3 className="profile-name">
+              <a className="cta" href="mailto:matteo.dante659@gmail.com">
+                GET IN TOUCH
+              </a>
+            </h3>
+          </div>
         </div>
       </div>
     </div>

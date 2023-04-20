@@ -160,6 +160,28 @@ button:hover {
   transform: scale(1.1);
 }
 
+.cta {
+  background-color: #000;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: bolder;
+  pointer-events: all;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  box-shadow: inset 0 0 0 0.09px black;
+  width: 125px;
+  text-transform: uppercase;
+  gap: 15px;
+  padding: 15px 30px;
+  text-decoration: none;
+}
+
+.cta:hover {
+  box-shadow: inset 250px 0 0 0 black;
+  transform: scale(1.1);
+}
+
 /* CUSTOMIZER */
 
 .customizer {
@@ -391,15 +413,17 @@ button[type="submit"] {
 
 .cover-photo {
   position: relative;
-  background: url(/bgresume.jpg);
+  background: url(/bgresume.png);
   background-size: cover;
   height: 180px;
   border-radius: 5px 5px 0 0;
+  margin-bottom: 60px;
 }
 
 .resume-body {
-  margin-top: 10px;
-  text-align: right;
+  margin-top: 45px;
+  margin-bottom: 45px;
+  text-align: center;
   padding: 0.5rem;
   border-radius: 0 0 5px 5px;
 }
