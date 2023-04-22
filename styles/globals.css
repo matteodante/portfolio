@@ -415,6 +415,8 @@ button[type="submit"] {
   position: relative;
   background: url(/bgresume.png);
   background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat, repeat;
   height: 180px;
   border-radius: 5px 5px 0 0;
   margin-bottom: 60px;
