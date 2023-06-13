@@ -29,8 +29,8 @@ const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
           eventSource={document.getElementById("__next")}
         >
           <PerformanceMonitor onIncline={upgrade} />
-          <ambientLight intensity={0.5} />
-          <Environment near={1} far={1000} resolution={1024} preset="sunset" />
+          <ambientLight intensity={2} />
+          {/*<Environment near={1} far={1000} resolution={1024} preset="sunset" />*/}
           <AdaptiveDpr pixelated />
           {!GoodPC ? (
             <CameraRig>
@@ -55,7 +55,7 @@ const App = ({ position = [0, 0, 2.5], fov = 25 }) => {
 
 function Backdrop() {
   const shadows = useRef();
-  useFrame((state, delta) => {});
+  useFrame((state, delta) => { });
   return (
     <>
       <AccumulativeShadows

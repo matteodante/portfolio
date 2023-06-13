@@ -9,14 +9,14 @@ export default function Post({ children }) {
   return (
     <EffectComposer>
       <Stars />
-      <Glitch
+      {/*<Glitch
         delay={[3, 4]} // min and max glitch delay
         duration={[0.6, 1.0]} // min and max glitch duration
         strength={[0.3, 0.6]} // min and max glitch strength
         mode={GlitchMode.SPORADIC} // glitch mode
         active // turn on/off the effect (switches between "mode" prop and GlitchMode.DISABLED)
         ratio={0.4} // Threshold for strong glitches, 0 - no weak glitches, 1 - no strong glitches.
-      />
+  />*/}
     </EffectComposer>
   );
 }
