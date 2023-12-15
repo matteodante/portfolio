@@ -6,6 +6,7 @@ import Resume from "./Resume";
 import Languages from "./Languages";
 import { FormattedMessage } from "react-intl";
 
+
 export function Overlay() {
   const snap = useSnapshot(state);
   const transition = { type: "spring", duration: 0.8 };

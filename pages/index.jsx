@@ -2,7 +2,6 @@
 import { Overlay } from "../components/Overlay";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const Canvas = dynamic(() => import("../components/Scene"), {
   ssr: false,
@@ -38,7 +37,6 @@ export default function Home() {
       </Head>
       <Canvas />
       <Overlay />
-      <SpeedInsights />
     </>
   );
 }
