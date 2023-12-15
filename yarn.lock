@@ -456,6 +456,11 @@
   resolved "https://registry.npmjs.org/@vercel/analytics/-/analytics-0.1.11.tgz"
   integrity sha512-mj5CPR02y0BRs1tN3oZcBNAX9a8NxsIUl9vElDPcqxnMfP0RbRc9fI9Ud7+QDg/1Izvt5uMumsr+6YsmVHcyuw==
 
+"@vercel/speed-insights@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/@vercel/speed-insights/-/speed-insights-1.0.2.tgz"
+  integrity sha512-y5HWeB6RmlyVYxJAMrjiDEz8qAIy2cit0fhBq+MD78WaUwQvuBnQlX4+5MuwVTWi46bV3klaRMq83u9zUy1KOg==
+
 "@webgpu/glslang@^0.0.15":
   version "0.0.15"
   resolved "https://registry.npmjs.org/@webgpu/glslang/-/glslang-0.0.15.tgz"
