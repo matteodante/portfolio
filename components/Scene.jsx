@@ -61,13 +61,13 @@ function Backdrop() {
       ref={shadows}
       temporal
       frames={100}
-      alphaTest={0.85}
-      scale={15}
+      alphaTest={0.3}
+      scale={3}
       rotation={[Math.PI / 2, 0, 0]}
       position={[0, 0, -0.2]}
     >
       <RandomizedLight
-        amount={8}
+        amount={3}
         radius={9}
         intensity={0.9}
         ambient={0.25}
@@ -86,7 +86,7 @@ function CameraRig({ children }) {
       state.camera.position,
       [
         snap.intro ? -state.viewport.width / 4 : 0,
-        snap.intro ? 0 : snap.chat ? 0.1 : 0.1,
+        snap.intro ? 0.3 : snap.chat ? 0.4 : 0.1,
         snap.intro ? 2 : snap.chat ? 1 : 8,
       ],
       0.25,
