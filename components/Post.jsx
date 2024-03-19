@@ -1,8 +1,5 @@
-import { EffectComposer, Glitch } from "@react-three/postprocessing";
-import { easing } from "maath";
-import { useRef } from "react";
-import { useFrame } from "@react-three/fiber";
-import { GlitchMode } from "postprocessing";
+import { EffectComposer } from "@react-three/postprocessing";
+
 import Stars from "./Stars";
 
 export default function Post({ children }) {
