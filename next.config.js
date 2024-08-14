@@ -5,7 +5,7 @@ module.exports = withTM();
 const nextConfig = {
   reactStrictMode: false,
   i18n: {
-    locales: ["en", "it", "sv"],
+    locales: ["en", "it", "sv", "de", "fr"],
     defaultLocale: "en",
   },
 };

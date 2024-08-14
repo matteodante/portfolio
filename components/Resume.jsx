@@ -15,18 +15,17 @@ export default function Resume() {
       </a>
       <div id="resume" className="resume">
         <div className="cover-photo">
-          <img src="/me.jpeg" className="profile" alt="me" />
+          <img src="/me.jpeg" className="profile" alt="Matteo Dante" />
         </div>
         <div className="description">
-          <h5>Summary</h5>
+          <h5><FormattedMessage id="page.resume.summaryTitle" /></h5>
           <p>
             <FormattedMessage id="page.resume.summary" />
           </p>
         </div>
         <div className="description">
-          <h5>Skills</h5>
+          <h5><FormattedMessage id="page.resume.skillsTitle" /></h5>
           <ul>
-            <li>Full-stack development</li>
             <li>
               <FormattedMessage id="page.resume.skills.1" />
             </li>
@@ -48,7 +47,7 @@ export default function Resume() {
           </ul>
         </div>
         <div className="description">
-          <h5>Education</h5>
+          <h5><FormattedMessage id="page.resume.educationTitle" /></h5>
           <ul>
             <li>
               <FormattedMessage id="page.resume.education.1" />
@@ -59,8 +58,29 @@ export default function Resume() {
           </ul>
         </div>
         <div className="description">
-          <h3>Experiences</h3>
-          <h5>IT-Assistant and Web Developer at Galileo S.p.A</h5>
+          <h3><FormattedMessage id="page.resume.experiencesTitle" /></h3>
+          <h5>Pilatus Aircraft Ltd - Software Engineer</h5>
+          <ul>
+            <li>
+              <FormattedMessage id="page.resume.experiences.6" />
+            </li>
+          </ul>
+
+          <h5>DonTouch SA - Back End Developer</h5>
+          <ul>
+            <li>
+              <FormattedMessage id="page.resume.experiences.7" />
+            </li>
+          </ul>
+
+          <h5>Hexa Credit Care - Full Stack Developer</h5>
+          <ul>
+            <li>
+              <FormattedMessage id="page.resume.experiences.8" />
+            </li>
+          </ul>
+
+          <h5>Galileo SpA - IT Specialist</h5>
           <ul>
             <li>
               <FormattedMessage id="page.resume.experiences.1" />
@@ -70,26 +90,13 @@ export default function Resume() {
             </li>
           </ul>
 
-          <h5>Full Stack Web Developer at Esafactoring S.r.l</h5>
-          <ul>
-            <li>
-              <FormattedMessage id="page.resume.experiences.3" />
-            </li>
-            <li>
-              <FormattedMessage id="page.resume.experiences.4" />
-            </li>
-            <li>
-              <FormattedMessage id="page.resume.experiences.5" />
-            </li>
-          </ul>
-
           <p>
             <FormattedMessage id="page.resume.outro" />
           </p>
           <div className="resume-body">
             <h3 className="profile-name">
               <a className="cta" href="mailto:matteo.dante659@gmail.com">
-                GET IN TOUCH
+                <FormattedMessage id="page.resume.contact" />
               </a>
             </h3>
           </div>

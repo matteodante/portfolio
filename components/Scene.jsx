@@ -62,7 +62,7 @@ function Backdrop() {
       temporal
       frames={100}
       alphaTest={0.3}
-      scale={3}
+      scale={8}
       rotation={[Math.PI / 2, 0, 0]}
       position={[0, 0, -0.2]}
     >
@@ -87,7 +87,7 @@ function CameraRig({ children }) {
       [
         snap.intro ? -state.viewport.width / 4 : 0,
         snap.intro ? 0.3 : snap.chat ? 0.4 : 0.1,
-        snap.intro ? 2 : snap.chat ? 1 : 8,
+        snap.intro ? 2 : snap.chat ? 1 : 6,
       ],
       0.25,
       delta
